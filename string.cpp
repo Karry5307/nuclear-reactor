@@ -2,6 +2,9 @@
 #include "basic.cpp"
 namespace Random{
 	typedef std::string Str;
+	// Make an analysis of a given charset.
+	// Charsets begins with a '[' and ends with a ']'.
+	// You can use '-' just like regular expressions.
 	inline Str analyzeCharSet(Str charSet)
 	{
 		int length=charSet.length();
@@ -33,6 +36,7 @@ namespace Random{
 		}
 		return res;
 	}
+	// Generates a char which matches the given charset.
 	inline char randChar(Str charSet)
 	{
 		RandEngine rd;
@@ -48,6 +52,7 @@ namespace Random{
 		}
 		return str[rd.get()%str.length()];
 	}
+	// Generates a string which has a specific length and every letter matches the charset.
 	inline Str randString(int length,Str charSet)
 	{
 		RandEngine rd;
