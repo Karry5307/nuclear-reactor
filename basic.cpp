@@ -2,6 +2,7 @@
 #include<random>
 namespace Random{
 	typedef unsigned long long int u64;
+	// A random engine based on mt19937 and uses seed based on current time.
 	struct RandEngine{
 		inline u64 get()
 		{
@@ -9,11 +10,14 @@ namespace Random{
 			return (u64)mt();
 		}
 	};
+	// Generates a random integer which is in [l,r].
+	// l must not greater than r.
 	inline u64 randInt(u64 l,u64 r)
 	{
 		static RandEngine rd;
 		return l+rd.get()%(r-l+1);
 	}
+	// Generates a random floating-point number which has a specific precision.
 	inline double randFloat(int precision)
 	{
 		static RandEngine rd;
@@ -26,6 +30,8 @@ namespace Random{
 		}
 		return res;
 	}
+	// Generates a random floating-point number which is in [l,r] and has a specific precision.
+	// l must not greater than r.
 	inline double randFloat(double l,double r,int precision)
 	{
 		static RandEngine rd;
